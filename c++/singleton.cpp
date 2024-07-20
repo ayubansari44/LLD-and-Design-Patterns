@@ -1,63 +1,40 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Test{
+//basic without multithreading
+class Singleton
+{
     private:
-        static int counter;
+        //************Very important -> Constructor is private **************
+        static Singleton *instance;
+
+        Singleton()
+        {
+            cout<<"Singleton class initialized!"<<endl;
+        }
     
     public:
-    Test(){
-        counter++;
-    }
-
-    ~Test(){
-        counter--;
-    }
-
-     static int getCount()
+        static Singleton* getInstance()
         {
-            return counter;
+            if(instance==NULL)
+            {
+                instance=new Singleton();
+            }
+            return instance;
+        }
+
+        void showMessage(){
+            cout<<"Singleton says hello!"<<endl;
         }
 };
 
-// Initialize static member outside the class definition
-int Test::counter = 0;
+Singleton* Singleton :: instance = NULL;
 
 int main()
 {
-    // Test obj1;  // Create a Test object (not using new)
+    Singleton* s = Singleton::getInstance();
+    s->showMessage();
 
-    // // Using the object
-    // cout << "Count before creating another object: " << Test::getCount() << endl;
-
-    // {
-    //     Test obj2;  // Creating another Test object
-    //     cout << "Count inside inner scope: " << Test::getCount() << endl;
-    // } // obj2 goes out of scope and is destroyed
-
-    // cout << "Count after inner scope: " << Test::getCount() << endl;
-
-    // // Dynamic object creation using new
-    // Test* obj3 = new Test();
-    // cout << "Count after creating dynamic object: " << Test::getCount() << endl;
-
-    // delete obj3;  // Don't forget to delete dynamically allocated memory
-    // cout << "Count after deleting dynamic object: " << Test::getCount() << endl;
-
-    // return 0;
-    Test *obj1;
-    cout<<Test::getCount()<<endl; 
-
-    {Test *obj2;
-    cout<<Test::getCount()<<endl;} 
-
-
-    Test *obj3;
-    cout<<Test::getCount()<<endl;
-    
-    delete obj3;
-    cout<<Test::getCount()<<endl;
-
-
-
+    Singleton *t = Singleton::getInstance();
+    t->showMessage();
 }
