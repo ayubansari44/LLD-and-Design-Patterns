@@ -1,6 +1,16 @@
 {
     "files.associations": {
         "ostream": "cpp",
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "memory": "cpp",
+        "format": "cpp",
+        "future": "cpp",
+        "istream": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "variant": "cpp"
     }
 }
