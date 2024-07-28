@@ -295,5 +295,5 @@ int main()
 
     taskManager->deleteTask(t2);
     taskManager->displayAllTasks();//display only tasks
-    taskManager->displayUserTasks(user1); //display all users with tasks 
+    taskManager->displayUserTasks(user1); //display all users with tasks
 }
