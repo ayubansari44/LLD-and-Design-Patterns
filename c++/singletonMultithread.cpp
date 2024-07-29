@@ -7,7 +7,7 @@ class Singleton
 {
     private:
         static Singleton *instance;
-        static std::mutex mtx; // Mutex is added to Thread safety
+        static mutex mtx; // Mutex is added to Thread safety
 
         Singleton()
         {
@@ -36,7 +36,7 @@ class Singleton
 };
 
 Singleton* Singleton :: instance = NULL;
-std::mutex mtx;
+mutex Singleton :: mtx;
 
 int main()
 {
