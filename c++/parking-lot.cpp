@@ -60,10 +60,10 @@ class ParkingSpot
 
         }
 
-        ParkingSpot(int no)
+        ParkingSpot(int no, VehicleType type)
         {
             this->spotNo=no;
-            vehicleType = VehicleType::CAR; //default type is CAR
+            vehicleType = type; //default type is CAR
         }
 
         bool isAvailable(){
@@ -103,12 +103,12 @@ class Level{
         int floor;
         vector<ParkingSpot*> parkingSpots;
     public:
-        Level(int floor, int numSpots)
+        Level(int floor, int numSpots, VehicleType type)
         {
             this->floor=floor;
             parkingSpots.resize(numSpots);
             for(int i=0;i<numSpots;i++){
-                parkingSpots[i] = new ParkingSpot(i);
+                parkingSpots[i] = new ParkingSpot(i, type);
             }
         }
 
@@ -204,8 +204,9 @@ ParkingLot* ParkingLot :: instance = NULL;
 int main()
 {
     ParkingLot *parkingLot = ParkingLot::getInstance();
-    parkingLot->addLevels(new Level(1, 10));
-    parkingLot->addLevels(new Level(2, 5));
+    parkingLot->addLevels(new Level(1, 6, VehicleType::CAR));
+    parkingLot->addLevels(new Level(2, 5, VehicleType::BIKE));
+    parkingLot->addLevels(new Level(3, 3, VehicleType::TRUCK));
 
     Vehicle *car = new Car("KA-25");
     Vehicle *bike = new Bike("KA-09");
@@ -214,8 +215,8 @@ int main()
     parkingLot->parkVehicle(car);
     parkingLot->parkVehicle(bike);
     parkingLot->parkVehicle(truck);
-
     parkingLot->displayAvailability();
 
-
+    parkingLot->unparkVehicle(car);
+    parkingLot->displayAvailability();
 }
