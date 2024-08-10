@@ -2,8 +2,8 @@
 #include<bits/stdc++.h>
 #include "Comment.h"
 #include "commentable.h"
-#include "Answer.h"
-#include "Question.h"
+#include "answer.h"
+#include "question.h"
 
 using namespace std;
 

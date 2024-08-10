@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include<Comment.h>
+#include "Comment.h"
 using namespace std;
 
 Comment::Comment(User* author, string content)

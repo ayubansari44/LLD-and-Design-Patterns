@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include<Vote.h>
+#include "Vote.h"
 using namespace std;
 
 Vote::Vote(User* user, int value)
