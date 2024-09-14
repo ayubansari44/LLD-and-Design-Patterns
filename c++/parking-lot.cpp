@@ -22,6 +22,10 @@ class Vehicle{
         {
             return type;
         }
+
+        string getLicencePlate(){
+            return licencePlate;
+        }
 };
 
 class Car : public Vehicle{
@@ -57,11 +61,12 @@ class ParkingSpot
     
     public:
         ParkingSpot(){
-
+            this->parkedVehicle = NULL;
         }
 
         ParkingSpot(int no, VehicleType type)
         {
+            this->parkedVehicle = NULL;
             this->spotNo=no;
             vehicleType = type; //default type is CAR
         }
@@ -106,9 +111,9 @@ class Level{
         Level(int floor, int numSpots, VehicleType type)
         {
             this->floor=floor;
-            parkingSpots.resize(numSpots);
+            // parkingSpots.resize(numSpots);
             for(int i=0;i<numSpots;i++){
-                parkingSpots[i] = new ParkingSpot(i, type);
+                parkingSpots.push_back(new ParkingSpot(i, type));
             }
         }
 
@@ -174,7 +179,7 @@ class ParkingLot{
                 if(it->parkVehicle(v) == true)
                     return true;
             }
-
+            cout << "No parking spot available for vehicle " << v->getLicencePlate() << endl;
             return false;
         }
 
@@ -186,6 +191,7 @@ class ParkingLot{
                     return true;
             }
 
+            cout << "Vehicle " << v->getLicencePlate() << " not found in the parking lot." << endl;
             return false;
         }
 
@@ -203,6 +209,7 @@ ParkingLot* ParkingLot :: instance = NULL;
 
 int main()
 {
+    cout<<"Welcome to  Parking_Lot Low Design"<<endl;
     ParkingLot *parkingLot = ParkingLot::getInstance();
     parkingLot->addLevels(new Level(1, 6, VehicleType::CAR));
     parkingLot->addLevels(new Level(2, 5, VehicleType::BIKE));
@@ -217,6 +224,7 @@ int main()
     parkingLot->parkVehicle(truck);
     parkingLot->displayAvailability();
 
+    cout<<endl<<"##########  After unparking #############"<<endl;
     parkingLot->unparkVehicle(car);
     parkingLot->displayAvailability();
 }
