@@ -33,7 +33,8 @@ int main()
     cout<<"Votes:"<<javaQuestion->getVoteCount()<<endl;
     cout<<"Comments:"<<javaQuestion->getComments().size()<<endl;
     cout<<"------------------------------------------------"<<endl;
-    cout<<"Answer by:"<<javaAnswer->getAuthor()->getUsername()<<endl;
+    cout<<"Answer:"<<javaAnswer->getContent()<<endl;
+    cout<<"Answered by:"<<javaAnswer->getAuthor()->getUsername()<<endl;
     cout<<"Votes:"<<javaAnswer->getVoteCount()<<endl;
     cout<<"Accepted:"<<javaAnswer->isAcceptedd()<<endl;
     cout<<"Comments:"<<javaAnswer->getComments().size()<<endl;
